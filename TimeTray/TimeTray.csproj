@@ -10,4 +10,18 @@
 
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Remove="tray_idle.ico" />
+    <None Remove="tray_running.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="tray_idle.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="tray_running.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+
 </Project>

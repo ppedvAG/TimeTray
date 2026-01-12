@@ -24,13 +24,19 @@ namespace TimeTray
         private void Start_Click(object sender, RoutedEventArgs e)
         {
             TimeTracker.Instance.Start(); // wenn schon läuft -> ignoriert
+            TimeTracker.Instance.Start();
+            TrayService.Instance.UpdateIcon();
             RefreshUi();
+
         }
 
         private void Stop_Click(object sender, RoutedEventArgs e)
         {
             TimeTracker.Instance.Stop(); // wenn nicht läuft -> ignoriert
+            TimeTracker.Instance.Start();
+            TrayService.Instance.UpdateIcon();
             RefreshUi();
+
         }
 
         public void ShowAndRefresh()

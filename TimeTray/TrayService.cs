@@ -10,6 +10,8 @@ namespace TimeTray
         public static TrayService Instance { get; } = new TrayService();
         private NotifyIcon? _icon;
         private MainWindow? _window;
+        private Icon _idleIcon;
+        private Icon _runningIcon;
 
         private TrayService() { }
 
@@ -26,9 +28,34 @@ namespace TimeTray
                 Icon = SystemIcons.Application, // minimal: Standard-Icon
                 ContextMenuStrip = BuildMenu()
             };
+            _idleIcon = new Icon("tray_idle.ico");
+            _runningIcon = new Icon("tray_running.ico");
+
+            UpdateIcon();
+
 
             _icon.DoubleClick += (_, __) => _window?.ShowAndRefresh();
         }
+        public void UpdateIcon()
+        {
+            if (_icon == null) return;
+
+            _icon.Icon = TimeTracker.Instance.IsRunning
+                ? _runningIcon
+                : _idleIcon;
+            UpdateTooltip();
+
+        }
+        public void UpdateTooltip()
+        {
+            if (_icon == null) return;
+
+            if (TimeTracker.Instance.IsRunning)
+                _icon.Text = "Time läuft";
+            else
+                _icon.Text = "Time gestoppt";
+        }
+
 
         private ContextMenuStrip BuildMenu()
         {
