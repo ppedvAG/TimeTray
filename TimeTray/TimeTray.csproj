@@ -16,12 +16,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="tray_idle.ico">
+    <Content Include="tray_idle.ico">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="tray_running.ico">
+    </Content>
+    <Content Include="tray_running.ico">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
+    </Content>
   </ItemGroup>
 
 </Project>
